@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { generateAnswer } from '../services/api';
+import { generateAnswer } from '../services/api.js';
 
 export const useOpenAI = () => {
   const [response, setResponse] = useState('');
