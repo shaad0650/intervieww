@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -35,6 +36,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/manifest.json", to: "manifest.json" }, // FIXED: Ensure correct path
+        { from: "src/icons/icon16.png", to: "icon16.png", noErrorOnMissing: true }, // FIXED: Corrected path
+        { from: "src/icons/icon48.png", to: "icon48.png", noErrorOnMissing: true }, // FIXED: Corrected path
+        { from: "src/icons/icon128.png", to: "icon128.png", noErrorOnMissing: true } // FIXED: Corrected path
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: './src/popup/popup.html',
       filename: 'popup.html',

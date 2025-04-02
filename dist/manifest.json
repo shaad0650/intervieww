@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "AI Interview Assistant",
+    "description": "Real-time AI-powered answers to interview questions",
+    "version": "1.0",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+      }
+    },
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://*.zoom.us/*",
+      "https://*.google.com/*",
+      "https://*.webex.com/*",
+      "https://*.skype.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://*.zoom.us/*",
+          "https://*.google.com/*",
+          "https://*.webex.com/*",
+          "https://*.skype.com/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  }
